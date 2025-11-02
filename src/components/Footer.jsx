@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaEnvelope, FaCode } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { socialLinks } from '../utils/constants';
 
 const Footer = () => {
@@ -32,8 +32,8 @@ const Footer = () => {
               { icon: FaGithub, href: socialLinks.github, label: 'GitHub' },
               { icon: FaLinkedin, href: socialLinks.linkedin, label: 'LinkedIn' },
               { icon: FaEnvelope, href: socialLinks.email, label: 'Email' },
-              { icon: FaCode, href: socialLinks.leetcode, label: 'LeetCode' },
-            ].map(({ icon: Icon, href, label }) => (
+              { isImage: true, href: socialLinks.leetcode, label: 'LeetCode' },
+            ].map(({ icon: Icon, isImage, href, label }) => (
               <motion.a
                 key={label}
                 href={href}
@@ -44,7 +44,22 @@ const Footer = () => {
                 className="w-10 h-10 glass-light rounded-full flex items-center justify-center text-slate-400 hover:text-cyan-400 border border-slate-700/50 hover:border-cyan-400/50 transition-all duration-300"
                 aria-label={label}
               >
-                <Icon size={18} />
+                {isImage ? (
+                  <img 
+                    src="/image.png" 
+                    alt={label} 
+                    className="w-5 h-5 object-contain"
+                    style={{ 
+                      filter: 'brightness(0) saturate(100%) invert(69%) sepia(100%) saturate(500%) hue-rotate(140deg) brightness(1) contrast(1)'
+                    }}
+                    onError={(e) => {
+                      console.error('LeetCode logo not found');
+                      e.target.style.display = 'none';
+                    }}
+                  />
+                ) : (
+                  <Icon size={18} />
+                )}
               </motion.a>
             ))}
           </motion.div>

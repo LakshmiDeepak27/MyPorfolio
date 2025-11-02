@@ -55,7 +55,7 @@ const Typewriter = () => {
     >
       <div className="container mx-auto">
         <motion.p
-          className="text-xl sm:text-2xl md:text-3xl font-medium text-slate-200 min-h-[3rem] flex items-center justify-center"
+          className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-slate-200 min-h-[2.5rem] sm:min-h-[3rem] flex items-center justify-center px-2"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
@@ -63,7 +63,7 @@ const Typewriter = () => {
           <motion.span
             animate={{ opacity: [1, 0] }}
             transition={{ duration: 0.8, repeat: Infinity, repeatType: 'reverse' }}
-            className="inline-block w-0.5 h-8 sm:h-10 bg-cyan-400 ml-2 align-middle"
+            className="inline-block w-0.5 h-6 sm:h-8 md:h-10 bg-cyan-400 ml-2 align-middle"
           />
         </motion.p>
       </div>

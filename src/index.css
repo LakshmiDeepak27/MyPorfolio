@@ -7,6 +7,16 @@
 @layer base {
   body {
     @apply bg-slate-900 text-slate-100 antialiased;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+  }
+  
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  button, a {
+    touch-action: manipulation;
   }
 }
 

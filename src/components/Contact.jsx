@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import { FaGithub, FaLinkedin, FaEnvelope, FaMapMarkerAlt, FaPhone, FaCode } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
 import { socialLinks, formspreeEndpoint } from '../utils/constants';
 
 const Contact = () => {
@@ -96,7 +96,7 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Info */}
             <motion.div variants={itemVariants} className="space-y-8">
-              <div className="glass rounded-2xl p-8">
+              <div className="glass rounded-2xl p-6 sm:p-8">
                 <h3 className="text-2xl font-bold mb-6 gradient-text">Let's Connect</h3>
                 <p className="text-slate-300 mb-8 leading-relaxed">
                   I'm always open to discussing new projects, creative ideas, or opportunities
@@ -116,10 +116,10 @@ const Contact = () => {
                         initial={{ opacity: 0, x: -20 }}
                         animate={isVisible ? { opacity: 1, x: 0 } : {}}
                         transition={{ delay: 0.4 + index * 0.1 }}
-                        className="flex items-center gap-4 text-slate-300 hover:text-cyan-400 transition-colors"
+                        className="flex items-center gap-3 sm:gap-4 text-slate-300 hover:text-cyan-400 transition-colors text-sm sm:text-base"
                       >
-                        <div className="w-12 h-12 glass-light rounded-lg flex items-center justify-center text-cyan-400">
-                          <Icon size={20} />
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 glass-light rounded-lg flex items-center justify-center text-cyan-400 flex-shrink-0">
+                          <Icon size={18} className="sm:w-5 sm:h-5" />
                         </div>
                         {item.href ? (
                           <a
@@ -139,13 +139,13 @@ const Contact = () => {
                 {/* Social Links */}
                 <div className="mt-8 pt-8 border-t border-slate-700/50">
                   <p className="text-slate-300 mb-4">Follow me on:</p>
-                  <div className="flex gap-4">
+                  <div className="flex gap-3 sm:gap-4 flex-wrap">
                     {[
                       { icon: FaGithub, href: socialLinks.github, label: 'GitHub' },
                       { icon: FaLinkedin, href: socialLinks.linkedin, label: 'LinkedIn' },
                       { icon: FaEnvelope, href: socialLinks.email, label: 'Email' },
-                      { icon: FaCode, href: socialLinks.leetcode, label: 'LeetCode' },
-                    ].map(({ icon: Icon, href, label }) => (
+                      { isImage: true, href: socialLinks.leetcode, label: 'LeetCode' },
+                    ].map(({ icon: Icon, isImage, href, label }) => (
                       <motion.a
                         key={label}
                         href={href}
@@ -153,10 +153,25 @@ const Contact = () => {
                         rel="noopener noreferrer"
                         whileHover={{ scale: 1.1, y: -5 }}
                         whileTap={{ scale: 0.9 }}
-                        className="w-12 h-12 glass-light rounded-lg flex items-center justify-center text-cyan-400 hover:text-cyan-300 border border-cyan-400/30 hover:border-cyan-400/50 transition-all duration-300"
+                        className="w-10 h-10 sm:w-12 sm:h-12 glass-light rounded-lg flex items-center justify-center text-cyan-400 hover:text-cyan-300 border border-cyan-400/30 hover:border-cyan-400/50 transition-all duration-300"
                         aria-label={label}
                       >
-                        <Icon size={20} />
+                        {isImage ? (
+                          <img 
+                            src="/image.png" 
+                            alt={label} 
+                            className="w-5 h-5 sm:w-6 sm:h-6 object-contain"
+                            style={{ 
+                              filter: 'brightness(0) saturate(100%) invert(69%) sepia(100%) saturate(500%) hue-rotate(140deg) brightness(1) contrast(1)'
+                            }}
+                            onError={(e) => {
+                              console.error('LeetCode logo not found');
+                              e.target.style.display = 'none';
+                            }}
+                          />
+                        ) : (
+                          <Icon size={18} className="sm:w-5 sm:h-5" />
+                        )}
                       </motion.a>
                     ))}
                   </div>
@@ -165,7 +180,7 @@ const Contact = () => {
             </motion.div>
 
             {/* Contact Form */}
-            <motion.div variants={itemVariants} className="glass rounded-2xl p-8">
+            <motion.div variants={itemVariants} className="glass rounded-2xl p-6 sm:p-8">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label

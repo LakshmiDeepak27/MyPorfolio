@@ -44,9 +44,13 @@ const Navbar = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="text-2xl font-bold gradient-text">
+          <a
+            href="#home"
+            onClick={(e) => handleNavClick(e, '#home')}
+            className="text-xl sm:text-2xl font-bold gradient-text cursor-pointer hover:opacity-80 transition-opacity active:opacity-70"
+          >
             NLD
-          </div>
+          </a>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
@@ -69,7 +73,7 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-slate-300 hover:text-cyan-400 transition-colors p-2"
+            className="md:hidden text-slate-300 hover:text-cyan-400 transition-colors p-2 active:scale-95 touch-manipulation"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <HiX size={24} /> : <HiMenu size={24} />}

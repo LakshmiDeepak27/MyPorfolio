@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaEnvelope, FaDownload, FaCode } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaDownload } from 'react-icons/fa';
 import { socialLinks, resumeLink } from '../utils/constants';
 
 const Hero = () => {
@@ -62,7 +62,7 @@ const Hero = () => {
           >
             <div className="relative">
               <motion.div
-                className="w-64 h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-cyan-400/50 shadow-2xl glow-effect"
+                className="w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-cyan-400/50 shadow-2xl glow-effect"
                 animate={{
                   boxShadow: [
                     '0 0 20px rgba(14, 165, 233, 0.3)',
@@ -162,14 +162,14 @@ const Hero = () => {
             {/* Social Icons */}
             <motion.div
               variants={itemVariants}
-              className="flex justify-center lg:justify-start gap-6"
+              className="flex justify-center lg:justify-start gap-4 sm:gap-6 flex-wrap"
             >
               {[
                 { icon: FaGithub, href: socialLinks.github, label: 'GitHub' },
                 { icon: FaLinkedin, href: socialLinks.linkedin, label: 'LinkedIn' },
                 { icon: FaEnvelope, href: socialLinks.email, label: 'Email' },
-                { icon: FaCode, href: socialLinks.leetcode, label: 'LeetCode' },
-              ].map(({ icon: Icon, href, label }) => (
+                { isImage: true, href: socialLinks.leetcode, label: 'LeetCode' },
+              ].map(({ icon: Icon, isImage, href, label }) => (
                 <motion.a
                   key={label}
                   href={href}
@@ -177,10 +177,25 @@ const Hero = () => {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.2, y: -5 }}
                   whileTap={{ scale: 0.9 }}
-                  className="w-12 h-12 glass-light rounded-full flex items-center justify-center text-cyan-400 hover:text-cyan-300 border border-cyan-400/30 hover:border-cyan-400/50 transition-all duration-300"
+                  className="w-10 h-10 sm:w-12 sm:h-12 glass-light rounded-full flex items-center justify-center text-cyan-400 hover:text-cyan-300 border border-cyan-400/30 hover:border-cyan-400/50 transition-all duration-300"
                   aria-label={label}
                 >
-                  <Icon size={20} />
+                  {isImage ? (
+                    <img 
+                      src="/image.png" 
+                      alt={label} 
+                      className="w-5 h-5 sm:w-6 sm:h-6 object-contain"
+                      style={{ 
+                        filter: 'brightness(0) saturate(100%) invert(69%) sepia(100%) saturate(500%) hue-rotate(140deg) brightness(1) contrast(1)'
+                      }}
+                      onError={(e) => {
+                        console.error('LeetCode logo not found');
+                        e.target.style.display = 'none';
+                      }}
+                    />
+                  ) : (
+                    <Icon size={18} className="sm:w-5 sm:h-5" />
+                  )}
                 </motion.a>
               ))}
             </motion.div>
