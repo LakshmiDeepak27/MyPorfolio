@@ -28,11 +28,23 @@ const Navbar = () => {
 
   const handleNavClick = (e, href) => {
     e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setIsMobileMenuOpen(false);
-    }
+    // Close mobile menu first
+    setIsMobileMenuOpen(false);
+    
+    // Wait a bit for menu to close, then scroll
+    setTimeout(() => {
+      const element = document.querySelector(href);
+      if (element) {
+        const navbarHeight = 80; // Approximate navbar height
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - navbarHeight;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 100);
   };
 
   return (
@@ -96,7 +108,7 @@ const Navbar = () => {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className={`block text-base font-medium transition-colors ${
+                  className={`block text-base font-medium transition-colors py-2 active:text-cyan-300 ${
                     activeSection === link.href.slice(1)
                       ? 'text-cyan-400'
                       : 'text-slate-300 hover:text-cyan-400'

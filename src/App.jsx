@@ -15,9 +15,9 @@ function App() {
   }, []);
 
   return (
-    <div className="App relative">
+    <div className="App relative bg-slate-900">
       <Navbar />
-      <main>
+      <main className="relative">
         <Hero />
         <About />
         <Projects />

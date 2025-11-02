@@ -5,10 +5,17 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #0f172a;
+  }
+  
   body {
     @apply bg-slate-900 text-slate-100 antialiased;
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
+    background-color: #0f172a;
+    min-height: 100vh;
   }
   
   * {
@@ -17,6 +24,12 @@
   
   button, a {
     touch-action: manipulation;
+  }
+  
+  /* Ensure sections connect smoothly */
+  section {
+    position: relative;
+    z-index: 1;
   }
 }
 

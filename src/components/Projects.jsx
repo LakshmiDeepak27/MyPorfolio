@@ -33,7 +33,7 @@ const Projects = () => {
     <section
       id="projects"
       ref={ref}
-      className="min-h-screen py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+      className="min-h-screen py-16 sm:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
     >
       <div className="container mx-auto max-w-7xl">
         <motion.div
