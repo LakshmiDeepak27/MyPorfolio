@@ -1,0 +1,52 @@
+import { 
+  SiJavascript,
+  SiTypescript,
+  SiMongodb,
+  SiMysql,
+  SiPostgresql,
+  SiTailwindcss,
+  SiFramer,
+  SiFirebase,
+  SiExpress,
+  SiNextdotjs,
+  SiVuedotjs,
+} from 'react-icons/si';
+import { 
+  FaReact, 
+  FaNodeJs, 
+  FaPython, 
+  FaJava, 
+  FaGitAlt,
+  FaGithub,
+  FaDocker,
+  FaAws,
+  FaHtml5, 
+  FaCss3Alt, 
+  FaBootstrap 
+} from 'react-icons/fa';
+
+export const skills = [
+  { name: "React", icon: FaReact, color: "text-cyan-400" },
+  { name: "Next.js", icon: SiNextdotjs, color: "text-gray-100" },
+  { name: "Vue.js", icon: SiVuedotjs, color: "text-green-400" },
+  { name: "JavaScript", icon: SiJavascript, color: "text-yellow-400" },
+  { name: "TypeScript", icon: SiTypescript, color: "text-blue-400" },
+  { name: "Node.js", icon: FaNodeJs, color: "text-green-500" },
+  { name: "Express", icon: SiExpress, color: "text-gray-300" },
+  { name: "Python", icon: FaPython, color: "text-blue-300" },
+  { name: "Java", icon: FaJava, color: "text-orange-500" },
+  { name: "HTML5", icon: FaHtml5, color: "text-orange-400" },
+  { name: "CSS3", icon: FaCss3Alt, color: "text-blue-500" },
+  { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-cyan-300" },
+  { name: "Bootstrap", icon: FaBootstrap, color: "text-purple-500" },
+  { name: "MongoDB", icon: SiMongodb, color: "text-green-400" },
+  { name: "MySQL", icon: SiMysql, color: "text-blue-400" },
+  { name: "PostgreSQL", icon: SiPostgresql, color: "text-blue-600" },
+  { name: "Git", icon: FaGitAlt, color: "text-orange-400" },
+  { name: "GitHub", icon: FaGithub, color: "text-gray-300" },
+  { name: "Docker", icon: FaDocker, color: "text-blue-400" },
+  { name: "AWS", icon: FaAws, color: "text-orange-400" },
+  { name: "Firebase", icon: SiFirebase, color: "text-yellow-400" },
+  { name: "Framer Motion", icon: SiFramer, color: "text-pink-400" },
+];
+
