@@ -82,7 +82,6 @@ const Contact = () => {
           animate={isVisible ? 'visible' : 'hidden'}
           variants={containerVariants}
         >
-          {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold mb-4">
               Get In <span className="gradient-text">Touch</span>
@@ -94,7 +93,6 @@ const Contact = () => {
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Info */}
             <motion.div variants={itemVariants} className="space-y-8">
               <div className="glass rounded-2xl p-6 sm:p-8">
                 <h3 className="text-2xl font-bold mb-6 gradient-text">Let's Connect</h3>
@@ -112,7 +110,7 @@ const Contact = () => {
                     const Icon = item.icon;
                     return (
                       <motion.div
-                        key={index}
+                        key={index}diw
                         initial={{ opacity: 0, x: -20 }}
                         animate={isVisible ? { opacity: 1, x: 0 } : {}}
                         transition={{ delay: 0.4 + index * 0.1 }}
@@ -136,7 +134,6 @@ const Contact = () => {
                   })}
                 </div>
 
-                {/* Social Links */}
                 <div className="mt-8 pt-8 border-t border-slate-700/50">
                   <p className="text-slate-300 mb-4">Follow me on:</p>
                   <div className="flex gap-3 sm:gap-4 flex-wrap">
@@ -179,7 +176,6 @@ const Contact = () => {
               </div>
             </motion.div>
 
-            {/* Contact Form */}
             <motion.div variants={itemVariants} className="glass rounded-2xl p-6 sm:p-8">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
